@@ -1,0 +1,62 @@
+# GoReleaser configuration for automated releases
+# Run with: goreleaser release --clean
+
+version: 2
+
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - id: jwt-decoder
+    binary: jwt-decoder
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - -s -w -X main.version={{.Version}}
+
+archives:
+  - id: jwt-decoder
+    formats:
+      - tar.gz
+    format_overrides:
+      - goos: windows
+        formats:
+          - zip
+    name_template: "{{ .ProjectName }}-{{ .Os }}-{{ .Arch }}"
+
+checksum:
+  name_template: 'checksums.txt'
+
+snapshot:
+  version_template: "{{ .Tag }}-next"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+      - '^chore:'
+
+brews:
+  - name: jwt-decoder
+    repository:
+      owner: ckumar3
+      name: homebrew-tap
+      token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
+    directory: Formula
+    homepage: "https://github.com/ckumar3/jwt-decoder"
+    description: "CLI tool to decode and display JWT tokens in a formatted manner"
+    license: "MIT"
+    test: |
+      system "#{bin}/jwt-decoder", "version"
+    install: |
+      bin.install "jwt-decoder"
