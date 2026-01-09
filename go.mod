@@ -1,4 +1,4 @@
-module github.com/ckumar3/jwt-decoder
+module github.com/ckumar392/jwt-decoder
 
 go 1.21
 

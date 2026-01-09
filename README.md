@@ -15,20 +15,20 @@ A command-line tool to decode and display JWT (JSON Web Tokens) in a formatted, 
 ### Using Homebrew (macOS/Linux)
 
 ```bash
-brew tap ckumar3/tap
+brew tap ckumar392/tap
 brew install jwt-decoder
 ```
 
 ### Using Go
 
 ```bash
-go install github.com/ckumar3/jwt-decoder@latest
+go install github.com/ckumar392/jwt-decoder@latest
 ```
 
 ### From Source
 
 ```bash
-git clone https://github.com/ckumar3/jwt-decoder.git
+git clone https://github.com/ckumar392/jwt-decoder.git
 cd jwt-decoder
 go build -o jwt-decoder .
 ```
@@ -129,21 +129,21 @@ To publish to Homebrew, create a tap repository and add this formula:
 ```ruby
 class JwtDecoder < Formula
   desc "CLI tool to decode and display JWT tokens"
-  homepage "https://github.com/ckumar3/jwt-decoder"
+  homepage "https://github.com/ckumar392/jwt-decoder"
   version "1.0.0"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/ckumar3/jwt-decoder/releases/download/v1.0.0/jwt-decoder-darwin-arm64.tar.gz"
+      url "https://github.com/ckumar392/jwt-decoder/releases/download/v1.0.0/jwt-decoder-darwin-arm64.tar.gz"
       sha256 "YOUR_SHA256_HERE"
     else
-      url "https://github.com/ckumar3/jwt-decoder/releases/download/v1.0.0/jwt-decoder-darwin-amd64.tar.gz"
+      url "https://github.com/ckumar392/jwt-decoder/releases/download/v1.0.0/jwt-decoder-darwin-amd64.tar.gz"
       sha256 "YOUR_SHA256_HERE"
     end
   end
 
   on_linux do
-    url "https://github.com/ckumar3/jwt-decoder/releases/download/v1.0.0/jwt-decoder-linux-amd64.tar.gz"
+    url "https://github.com/ckumar392/jwt-decoder/releases/download/v1.0.0/jwt-decoder-linux-amd64.tar.gz"
     sha256 "YOUR_SHA256_HERE"
   end
 
