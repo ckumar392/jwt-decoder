@@ -13,10 +13,10 @@ import (
 )
 
 var (
-	version   = "1.0.0"
-	showRaw   bool
-	noColor   bool
-	checkExp  bool
+	version  = "1.0.0"
+	showRaw  bool
+	noColor  bool
+	checkExp bool
 )
 
 func main() {
@@ -168,7 +168,7 @@ func printSection(title string, data map[string]interface{}, raw bool) {
 
 func printTimestamps(data map[string]interface{}) {
 	timeColor := color.New(color.FgHiBlack, color.Italic)
-	
+
 	timestampClaims := map[string]string{
 		"iat": "Issued At",
 		"exp": "Expires At",
@@ -205,7 +205,7 @@ func printSignature(signature string) {
 	titleColor.Printf("  SIGNATURE\n")
 	titleColor.Printf("═══════════════════════════════════════════════════════════════\n")
 	sigColor.Printf("  %s\n", signature)
-	
+
 	infoColor := color.New(color.FgHiBlack, color.Italic)
 	infoColor.Println("\n  ⚠ Note: This tool does not verify the signature.")
 	infoColor.Println("  Use appropriate libraries to verify token authenticity.")
